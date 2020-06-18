@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app='MsgApp'>
+    <head>
+        <script src="angular.min.js"></script>
+        <script src="app.js"></script>
+        <title>Expression and Interpolation</title>
+    </head>
+    <body>
+        <h1>
+            Expression and Interpolation 
+        </h1>
+        <div ng-controller='MsgController'>
+             {{name}} has a message for you.<br>
+             {{sayMessage()}}
+
+             <div>
+                 <button ng-click="feedAsangika()">Feed asangika</button>
+                 <br>
+                 <img ng-src = "images/asangika_{{stateofBeing}}.png">
+             </div>
+             
+        </div>
+    </body>
+</html>
