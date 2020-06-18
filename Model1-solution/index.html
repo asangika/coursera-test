@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app='LunchCheck'>
+    <head>
+        <script src="angular.min.js"></script>
+        <script src="app.js"></script>
+        <title>Model1-Solution</title>
+    </head>
+    <body>
+        <h1>
+            Lunch Check
+        </h1>
+        <div ng-controller='LunchCheckController'>
+              
+
+             <div>
+                  <input type="text" style="width: 300px;" ng-model="list" ng-keyup="CheckDishes();">
+             </div><br>{{NotOk}} {{Ok}} {{Error}} <br> <br>
+             <div>
+                 <button ng-click="CheckTooMuch()">Check If Too Much</button>
+             </div>
+        </div>
+    </body>
+</html>
