@@ -5,7 +5,7 @@
     .controller('LunchCheckController',  LunchCheckController);
     
         LunchCheckController.$inject = ['$scope'];
-        function LunchCheckController ($scope){
+        function LunchCheckController ($scope , $filter){
             $scope.list = " ";
              
              
@@ -18,22 +18,28 @@
                 var DishCount = nameArr.length;
                 console.log(DishCount);
 
-                return DishCount;
-            };
+                //return DishCount;
 
-            $scope.Count = DishCount;
-                $scope.CheckTooMuch = function( Count){
+                $scope.CheckTooMuch = function(  ){
                     
-                    if(DishCount < '4' && DishCount > '0')
+                    if(DishCount < '4' && DishCount > '0'){
+                         
                         $scope.Ok = "Enjoy!";
-                    else if (DishCount > '3')
+                        
+                    }else if (DishCount > '3'){
                         $scope.NotOk = "Too Much!";
-                    else
-                        $scope.Error = "Please Enter";
-                    console.log("Hi");
+                         
+                    }else{
+                        $scope.Error = "Please Enter Data!";
+                         
+                    }
                     
                      
                 };
+            };
+
+             
+                 
     
         
 

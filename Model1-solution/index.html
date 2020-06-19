@@ -3,6 +3,7 @@
     <head>
         <script src="angular.min.js"></script>
         <script src="app.js"></script>
+        <link rel="stylesheet" href="app.css">
         <title>Model1-Solution</title>
     </head>
     <body>
@@ -11,13 +12,22 @@
         </h1>
         <div ng-controller='LunchCheckController'>
               
-
+            <form class="form">
              <div>
-                  <input type="text" style="width: 300px;" ng-model="list" ng-keyup="CheckDishes();">
-             </div><br>{{NotOk}} {{Ok}} {{Error}} <br> <br>
+                  <input type="text" style="width: 300px;" 
+                        ng-model="list" 
+                        ng-keyup="CheckDishes();" 
+                        ng-trim="false" 
+                        placeholder="Enter Your Preferred Dishes"
+                        style="border-color:'{{stateOfBeing}}'; border-width: 100pt;">
+                  <!--not considered checking empty item-->
+             </div><br>
+            <p id="state">{{NotOk}} {{Ok}} {{Error}} </p>
+                <br> <br>
              <div>
                  <button ng-click="CheckTooMuch()">Check If Too Much</button>
              </div>
+            </form>
         </div>
     </body>
 </html>
