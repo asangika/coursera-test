@@ -11,10 +11,14 @@
         </h1>
         <div ng-controller='MsgController'>
              {{name}} has a message for you.<br>
-             {{sayMessage()}}
+             Original: {{sayMessage()}}<br>
+             Loves: {{sayLovesMessage()}}<br>
+             Truth : {{sayLovesMessage() | truth : 'Pasta' : 'cookie'}} <br>
+             Big Truth : {{sayLovesMessage() | truth : 'Pasta' : 'cookie' | uppercase}}
 
              <div>
                  <button ng-click="feedAsangika()">Feed asangika</button>
+                 Cost: {{CookieCost | currency : "#blah" : 4}}
                  <br>
                  <img ng-src = "images/asangika_{{stateofBeing}}.png">
              </div>
