@@ -1,29 +1,7 @@
 (function  ( ) {
     'use scrict';
 
-    var ShoppingList = [
-        {
-            name: "Milk",
-            Quantity:"2"
-        },
-        {
-            name: "Donuts",
-            Quantity:"20"
-        },
-        {
-            name: "Cookies",
-            Quantity:"300"
-        },
-        {
-            name: "Chocolate",
-            Quantity: "5"
-        },
-        {
-            name: "Cake",
-            Quantity: "3"
-        }
-    ]
-    
+      
     angular.module('ShoopingListCheckOff', [])
     .controller('ToBuyController', ToBuyController)
     .controller('AlreadyBoughtController', AlreadyBoughtController)
@@ -34,64 +12,83 @@
     function ToBuyController (ShoppingListCheckOffService){
 
         var list1 = this;
-        list1.items = ShoppingListCheckOffService.toBuyItems();
+        list1.items= ShoppingListCheckOffService.getItems();
 
-        list1.removeItem = function(itemIndex){
-            ShoppingListCheckOffService.buyItem(itemIndex);
+        list1.buyItem = function(itemIndex){
+            
+               ShoppingListCheckOffService.buyItem(itemIndex);
+            
+            
         };  
 
            
     }
 
-    /*AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+    AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
     function AlreadyBoughtController(ShoppingListCheckOffService){
 
-        var showList = this;
-        showList.items = ShoppingListService.getItems();
+        var list2 = this;
+        
+        list2.boughts = ShoppingListCheckOffService.boughtItems(); 
 
-        showList.removeItem = function(itemIndex){
-            ShoppingListService.removeItem(itemIndex);
-        };
-    }*/
+         
+    }
 
     function ShoppingListCheckOffService(){
         var service = this;
-        
-        var items = [];
+        var boughts = [];
+        var items= [
+            {
+                name: "Milk",
+                quantity:"2"
+            },
+            {
+                name: "Donuts",
+                quantity:"20"
+            },
+            {
+                name: "Cookies",
+                quantity:"300"
+            },
+            {
+                name: "Chocolate",
+                quantity: "5"
+            },
+            {
+                name: "Cake",
+                quantity: "3"
+            }
+        ];
+         
 
-        service.toBuyItems = function( ){
-            var ShoppingList = [
-                {
-                    name: "Milk",
-                    Quantity:"2"
-                },
-                {
-                    name: "Donuts",
-                    Quantity:"20"
-                },
-                {
-                    name: "Cookies",
-                    Quantity:"300"
-                },
-                {
-                    name: "Chocolate",
-                    Quantity: "5"
-                },
-                {
-                    name: "Cake",
-                    Quantity: "3"
-                }
-            ]
-            items.push(ShoppingList);
-        };
+         
 
         service.buyItem = function (itemIndex){
-            items.splice(itemIndex, 1);
+           
+             
+            var bought = items.splice(itemIndex, 1);
+            boughts.push(bought);
+            //return boughts;
+            //console.log(boughts);
         };
 
-        service.getItems = function(){
+        service.getItems = function( ){
+            
             return items;
+            
         };
+
+        service.boughtItems = function(){
+            
+            
+            return boughts;
+            //console.log("done");
+           
+            
+        };
+
+
+         
     }
 
      
