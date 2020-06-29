@@ -12,14 +12,16 @@
     function ToBuyController (ShoppingListCheckOffService){
 
         var list1 = this;
-        list1.items= ShoppingListCheckOffService.getItems();
-
+        
         list1.buyItem = function(itemIndex){
             
                ShoppingListCheckOffService.buyItem(itemIndex);
             
             
         };  
+        list1.items= ShoppingListCheckOffService.getItems();
+
+        list1.isEmpty = ShoppingListCheckOffService.isEmpty1;
 
            
     }
@@ -29,14 +31,15 @@
 
         var list2 = this;
         
-        list2.boughts = ShoppingListCheckOffService.boughtItems(); 
-
+        list2.items = ShoppingListCheckOffService.getItems2(); 
+        list2.isEmpty = ShoppingListCheckOffService.isEmpty2;
          
     }
+  
 
     function ShoppingListCheckOffService(){
         var service = this;
-        var boughts = [];
+        var items2 = [];
         var items= [
             {
                 name: "Milk",
@@ -66,26 +69,34 @@
         service.buyItem = function (itemIndex){
            
              
-            var bought = items.splice(itemIndex, 1);
-            boughts.push(bought);
+            
+           items2.push(items[itemIndex]);
+           items.splice(itemIndex, 1);
             //return boughts;
             //console.log(boughts);
-        };
+        }
 
-        service.getItems = function( ){
+        service.getItems = function(){
             
             return items;
             
-        };
+        }
 
-        service.boughtItems = function(){
+        service.getItems2 = function(){
             
             
-            return boughts;
-            //console.log("done");
+            return items2;
+            console.log("done");
            
             
-        };
+        }
+
+        service.isEmpty1=function (){
+            return items.length == 0;
+        }
+        service.isEmpty2=function () {  
+            return items2.length == 0;
+        }
 
 
          
