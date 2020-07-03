@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app='ShoppingLisPromisetApp'>
+    <head>
+       
+       <script src="angular.min.js"></script>
+       <script src="app.js"></script>
+        <title>Shopping List Promise App</title>
+    </head>
+
+
+    <body>
+        <h1>Shopping App with a PRomise</h1>
+        
+        <div ng-controller='ShoppingListController as list'></div>
+        <h3>Shopping List </h3>
+                  
+            <input type="text" ng-model="list.itemName" placeholder="Item Name">
+            <input type="text" ng-model="list.itemQuantity" placeholder="Item Quantity">
+            boxes
+            <button ng-click="list.addItem();"> Add Item To Shopping List</button>
+
+            <ol>
+                <li ng-repeat="item in list.items">
+                    {{item.quantity}} boxes of {{item.name}}
+                    <button ng-click="list.removeItem($index);">Remove</button>
+
+                </li>
+            </ol>
+    </body>
