@@ -37,7 +37,7 @@
 
      
      
-ShoppingListService.$inject = [$q , 'WeightLossFilterService']
+ShoppingListService.$inject = ['$q' , 'WeightLossFilterService']
     function ShoppingListService($q ,WeightLossFilterService ){ 
         var service = this;
         
@@ -66,10 +66,10 @@ ShoppingListService.$inject = [$q , 'WeightLossFilterService']
         });
     };
 
+    }
 
 
-
-     WeightLossFilterService.$inject['$q', '$timeout']
+     WeightLossFilterService.$inject = ['$q', '$timeout']
     function WeightLossFilterService ($q , $timeout){
         var service = this;
 
